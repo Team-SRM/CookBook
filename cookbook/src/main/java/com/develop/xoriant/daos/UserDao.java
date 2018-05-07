@@ -8,5 +8,7 @@ import com.develop.xoriant.model.User;
  */
 public interface UserDao {
 
+	User getUserById(int userId);
     void save(User user);
+    void updateUser(User user);
 }

@@ -1,4 +1,4 @@
-package com.develop.xoriant;
+package com.develop.xoriant.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
