@@ -1,5 +1,6 @@
 package com.develop.xoriant.daos;
 
+import com.develop.xoriant.Exceptions.UserValidationException;
 import com.develop.xoriant.model.User;
 
 /**
@@ -9,6 +10,7 @@ import com.develop.xoriant.model.User;
 public interface UserDao {
 
 	User getUserById(int userId);
+	User findByEmailId(String emailId);
     void save(User user);
-    void updateUser(User user);
+    void updateUser(User user)throws UserValidationException;
 }

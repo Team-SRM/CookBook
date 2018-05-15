@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.develop.xoriant.Exceptions.UserValidationException;
 import com.develop.xoriant.daos.UserDao;
 import com.develop.xoriant.mapper.DynaBean;
 import com.develop.xoriant.model.User;
@@ -46,4 +47,20 @@ public class UserController {
 		}
 		return response;
 	}
+	
+	@RequestMapping(value = "user/edit", method = RequestMethod.PUT)
+	public DynaBean editUser(@RequestBody User user){
+		
+		DynaBean response = new DynaBean();
+		try{
+			userDao.updateUser(user);
+			response.set("message", "User updated successfully.");
+			response.set("statusCode", HttpStatus.OK);
+		}catch(UserValidationException e){
+			response.set("message", e.getMessage());
+			response.set("statusCode", HttpStatus.BAD_REQUEST);
+		}
+		return response;
+	}
+	
 }
