@@ -13,6 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 
 /**
@@ -26,7 +27,8 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GenericGenerator(name="userIDGenerator",strategy="increment")
+	@GeneratedValue(generator="userIDGenerator")
 	@Column(name = "USER_ID", updatable = false, nullable = false)
     private Integer userID;
 	
